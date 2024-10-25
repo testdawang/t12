@@ -1,0 +1,140 @@
+# 内部转发请求配置，0值为无超时 单位为秒
+# connTimeout: 用户连接超时
+# idleConnTimeout: 空闲连接超时
+# responseHeaderTimeout: 响应头超时
+server-conn:
+  connTimeout: 0
+  idleConnTimeout: 0
+  responseHeaderTimeout: 0
+
+white-addr:
+   - '45.159.210.6'
+
+
+# 开启特殊标记增强
+flags: true
+
+# 图片访问
+domain: "https://chat-completion-chatgpt-adapter.hf.space"
+
+# 内调llm，用于绘图时文本转tags
+llm:
+  baseUrl: "http://127.0.0.1:7860"
+  model: "bing"
+  token: "xxx"
+
+# lmsys fn、 trigger
+lmsys: [49 , 109]
+
+# hf 绘图接口配置化
+# 若旧接口不可用，可以到huggingface上查找同类型的接口配置
+# 参数替换：{{prompt}}、{{negative_prompt}}、{{sampler}}、{{style}}、{{seed}}
+hf:
+#  animagine-xl-3.1:
+#    baseUrl: https://boboiazumi-animagine-xl-3-1.hf.space
+#    fn: [5, 61]
+#    data: '[
+#      "{{prompt}}",
+#      "{{negative_prompt}}",
+#      {{seed}},
+#      1024,
+#      1024,
+#      8,
+#      35,
+#      "{{sampler}}",
+#      "1024 x 1024",
+#      "{{style}}",
+#      "Standard v3.1",
+#      true,
+#      0.55,
+#      1.5,
+#      false,
+#      false,
+#      null,
+#      0.65
+#    ]'
+#  dalle-4k:
+#    baseUrl: https://mukaist-dalle-4k.hf.space
+#  dalle-3-xl:
+#    baseUrl: https://ehristoforu-dalle-3-xl-lora-v2.hf.space
+
+# gemini 自定义安全设置
+google:
+#  safes:
+#    - category: HARM_CATEGORY_HARASSMENT
+#      threshold: BLOCK_NONE
+
+bing:
+  baseUrl: "https://edgeservices.bing.com/edgesvc"
+
+claude:
+  pad: 0
+  cookies:
+    - 'xxx1'
+    - 'xxx2'
+
+you:
+  helper: 8082
+  notice: "Creative Writing Mode"
+  cookies:
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJyMndveWxkZkBleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3NzUyOCwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4MzI4LCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoicjJ3b3lsZGZAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTI6MDhaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmOW40cnZQUU5wbFE1eXNGQTVnOElhak4iLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmY5bjRydlBRTnBsUTV5c0ZBNWc4SWFqTiIsInZlcmlmaWVkRW1haWwiOnRydWV9.ArRSBmEsxBEfi0gdo1wQ4KvK9n8R2mzL19rs0-am88tfhSh121FQFPVOFU0o-1HAlRyBiGcmrP4bM6nTnpVaN75-1CNCOV9cpvSYYSGFAHyCQdu4GhQPBsjX-gqaBFy2KF4rldzcc5jiIDQKU84JK77k5HkUVCuQRNk6ZJ-FhVSNUaDCyMqWdZyv-3P27R6syhYzoQJ2pzrJCiQdNyyaJsIwknVNxz5RMF9ed-OAtTOvY1OPgwmChUV8bpHqXlDgX7urz_WD1LU2NmbQDopZnZ9A65-pv5zQ5YOduzYet6OIEexzzylEM1VZHzOV2WzUIlgpx0NkPXHSH3r6q0UxtQ'
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJsaGt2b2p2MkBleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3NzU1MCwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4MzUwLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoibGhrdm9qdjJAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTI6MzBaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmQ2dsZkowZkxsdm1PWG9VdFRmT1JHQWsiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmZDZ2xmSjBmTGx2bU9Yb1V0VGZPUkdBayIsInZlcmlmaWVkRW1haWwiOnRydWV9.tDlOI46Dziffn-IyUrmvaaTbJZPjacK4YADhIemsSH5eASpdxtkuFn2SJvNQQNCoLFR82_FfS9d4lVIgL8FE_IqKxd-HcyJw9ho6LJ97Fcv6m6VM0BSQ2A-mrJaC6rBuEvLqJor-Zq_EN3rCwTmKln5NLEjkzurohDlstWF0GbAxdjdHNozKhO3nGP03NMZu1R7ca-WkPN3y6w4JWSCYSUMpRCfV5ECtQpVP_J2ZmmFw7N7gyruOxuz1WhwOwgG3ljV0lNobUaEe4sGwWaQ7aNp4Fy2Xtwr2qWodAME_RBe-ATRx_eaMyre5MbZVI-KYWc-m8FtHHTVj0kCiI8RdiA'
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJ2NGpkaXEwbUBleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3NzU3MiwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4MzcyLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoidjRqZGlxMG1AZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTI6NTJaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmRkxWbGFUUDlFWFF3aEp4aUVscEltejMiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmZGTFZsYVRQOUVYUXdoSnhpRWxwSW16MyIsInZlcmlmaWVkRW1haWwiOnRydWV9.HzRH1tc5mWjFCidPCiTyYlI2E16eYQMIko6WmQm_T_O6bkEhPUI7vEas8kSgEDw18w_2_AeB0nzBtYj0KeRwaE6_8z_JVKOXrw19TeHSc2xMgTTxk3GsU98ORz6bBEsTxQszhrvaSidpTDiC5hDYoBfr1UPPQ9BtLSWFVcNCQGhMiTVsf9Jywd9M_vX0uCzFz-8vKRsgkQ_uWcYUQXPT28ko8pO_VKyTNmDRytmVKlhRgZ7UYtQ4q3PIRvMKWLxXvtcGXk094PKmxqzlkiDM3HRv1sugeEBedpw_hPP0le9WW1YPCTX2cLde2FFoSigh5L2fGmu5IZ9nksQu7IvLUQ'
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiI3eDJ2bnVxeUBleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3NzU5MywiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4MzkzLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoiN3gydm51cXlAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTM6MTNaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmSURGWjJSMUpCVDdtYVNvekIzUW5qYTciLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmZJREZaMlIxSkJUN21hU296QjNRbmphNyIsInZlcmlmaWVkRW1haWwiOnRydWV9.om-ZFeZKOvqAhy5yh8jvzRF0wbOGTCZNaazA0s_VWqJeci2QYXFFSzZT_Vmq1_EJoRC6I3rrT4alLQLx6aLh_o0ueAnS-bYM7ZBN9CMRSx1Qjbb5XiMAM6-dUX1VULb-Ox6cldsXAdFmqsYjOfdrafheutQje3rzVxvb2PwmDZX2qPL-wJFSzJgCMEgz3Xg9_CmDfUZe1C8SUkYa4Lp-PbfnSd1R34xk9DREc6umpnm1aP4NUcy4P3Ak8lxbQSUXUigKGMEFZHP4nkkykCGBZ2QsVYFl3QH63aLhCvMmuLHgurgZdwlbuBgrOdrF8P7qeAmf4u9dcMzMHbmC0wVHvg'
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiI0ZzQzZWE5Z0BleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3NzYxNSwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4NDE1LCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoiNGc0M2VhOWdAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTM6MzVaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmS29MNExtbE1MeFh6R29WVGgwWENwVkkiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmZLb0w0TG1sTUx4WHpHb1ZUaDBYQ3BWSSIsInZlcmlmaWVkRW1haWwiOnRydWV9.j-7MjjNvbmxVuDhk4fLVP2fpJtTY99LFZH0D6vY0aKDKHSot-kprzP9C3GJnFTu-2ZnNEmkpbXO7ScElPq71p8GaEFCxI3vMUSetHheMU6T_tNo8xbiTpfNS2vCiDrFhGfLr_sot-GrtuWKP54hcDGnAja8rKxteAiO0aBYkbCouCn4C4fDEqR-Tbon39IERj47a70hUGSZyOrCr4AlnYNYfT3fuageGat1Op9xz6EGUFmxju_if2HS7jzy0Qq88vF-s_6oc8By8e4SLmhwNCeSJmiwYceWVsrQJ3Mwv6zThiv9sdKl04gLwbkOAem6NA5GwrXdxoc-SvJ9ebki52Q'
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJlNGJ3YW14NkBleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3NzY5OCwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4NDk4LCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoiZTRid2FteDZAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTQ6NThaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmVkpsODM5aDRZTkYwQ1FzVHFFdmZSTXgiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmZWSmw4MzloNFlORjBDUXNUcUV2ZlJNeCIsInZlcmlmaWVkRW1haWwiOnRydWV9.fV3Lc3a1bslJUfO-j0POkwHtDZtxZ0F4CHmetNDQkLs6C9zgqbrt2mC5u_V9XRztzDXsmDQWRPiGJgIEOXn4sC3Tn3OQzush2TTapIPMyAnVwtzWggJ8_iHbnfw8R5VI4g_Z96FZx9EsmmzWiexk6I6KlgQfJOfWkSXhGxEsmFnOpWafwFSv9-cEXAe6XOUcduarts91FItF1cMI0JcA3YKHqmh68cynDsmyF1lvjrWdf-rwzZUkYSedQJTws8x0bG1DPBtJc7rX_3l8HoRqEHgCv0ddhbVYjZvOIy8TI9NakBFjN-fxfT26OGTeA6cFt0sMCUQ_jsEIEbIaJcW3mA'
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiI3ZDV5NGozcUBleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3NzcyMCwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4NTIwLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoiN2Q1eTRqM3FAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTU6MjBaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmWHh1WVpwb3lQY054bDFzcTgxZmVCSXMiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmZYeHVZWnBveVBjTnhsMXNxODFmZUJJcyIsInZlcmlmaWVkRW1haWwiOnRydWV9.IeVhd-PExXVN9iWHy2XGh7FqUnmUJOkqZHLjHXuSGZZnPw3MA0hhBWy5f_8A2Jf9GkWGiZ_Jcrir1nsrp3jf3Tre9i79ZXhDPWaZJ21uSbpaE0JieA-v_rIS5qqlPFOOY153DvCDii3_EFRKlFXR_wSeCOahE7jrk5hHxGvvyVgReKQ1PqJzYEKFvMWLLOpQMJ4jfF6-4qersaVInRR_aYdHAD_4ZZtyt6wgZr5P96np_kpB8gMLdfJupjRmoB_2gLB6VsFS77wGJYBgev7Ow-x27B06TPNh8D7NwYLgDdSJfyCb7chD8x91qdz-6_26H_ytpSCnUrTYmQedf0JIdw'
+    - 'uuid_guest=0645bcf0-cb78-4849-8887-2d6fcb2e9661; ai_model=gpt_4o; daily_query_count=0; daily_query_date=Fri%20Oct%2025%202024; DS=eyJhbGciOiJSUzI1NiIsImtpZCI6IlNLMmpJbnU3SWpjMkp1eFJad1psWHBZRUpQQkFvIiwidHlwIjoiSldUIn0.eyJhbXIiOlsiZmVkIl0sImF1dGgwSWQiOm51bGwsImRybiI6IkRTIiwiZW1haWwiOiJ6c3Q0OGo1N0BleGFtcGxlLmNvbSIsImV4cCI6MTczMjI3Nzc0MSwiZ2l2ZW5OYW1lIjoiIiwiaWF0IjoxNzI5ODU4NTQxLCJpc3MiOiJQMmpJbnR0Uk11WHB5WVpNYlZjc2M0QzlaMFJUIiwibGFzdE5hbWUiOiIiLCJuYW1lIjoienN0NDhqNTdAZXhhbXBsZS5jb20iLCJwaWN0dXJlIjoiIiwicmV4cCI6IjIwMjUtMTAtMjRUMTI6MTU6NDFaIiwic3R5dGNoSWQiOm51bGwsInN1YiI6IlUybnZmYW1IUjBvMXM1NUZlNjcwYkxuZ2VJazYiLCJ0ZW5hbnRJbnZpdGF0aW9uIjpudWxsLCJ0ZW5hbnRJbnZpdGVyIjpudWxsLCJ0ZW5hbnRzIjp7IlRlc3RTU08iOnt9fSwidXNlcklkIjoiVTJudmZhbUhSMG8xczU1RmU2NzBiTG5nZUlrNiIsInZlcmlmaWVkRW1haWwiOnRydWV9.bzoPNfBwf2I8cu2-ppRCryK9TpnEikYYnLPa2XWX0bYorKCG-2ykKbGkY8ieFHBObEmkdparielfDetoYc6eilI12bVnCesi5lsrBgZOO6Jwm2VJH4D5GbR2XWfRkTqEANklRYoN_DdTPzPp46TjLfTS2EIyODzqsv9nkzNJu2MFkEOIQ48U_0aWf8rxV5f7Cp4hd8T7M4CxNIGm5pZqyejL0X32EyVbIc8-e95wmJ17NN3QL3u6-udHaR7MpDMgE0sQZPX4IZy92KumWkUKptERGLemPaXexe9Q63UR4SXdBxnCeN6ihgMOdTC57r0rzj5tW9cBUrIE7H3hG3AkEg'
+
+serverless:
+  enabled: true
+  disabled-gpu: true
+  # 当无法找到指定的浏览器时可以在此配置路径
+  # execPath: /usr/bin/microsoft-edge
+  headless: new
+
+# coze 默认配置；；；内置配置经常变动，难以维护改为配置化。新增webSdk模式，但还未得知速率是否有限制？？？
+coze:
+#  8k:
+#    botId: 114514
+#    version: 9527
+#    scene: 2
+#    isW: false
+#  128k:
+#    botId: 114514
+#    version: 9527
+#    scene: 2
+#    isW: false
+#  images:
+#    botId: 114514
+#    version: 9527
+#    scene: 2
+
+# 多个websdk账号可开启，用于请求计数，超过count数量该账号进入静置区
+  websdk:
+#    counter: 0
+#    model:
+#    accounts:
+#    - email: xxx@gmail.com
+#      password: xxx
+#      validate: xxx@gmail.com
+
+interpreter:
+  baseUrl: http://127.0.0.1:7860
+  echoCode: false
+  ws: true
+
+custom-llm:
+  baseUrl: http://127.0.0.1:8080
+
+# toolCall 默认配置化; 在 flags 关闭时也可用
+toolCall:
+  id: -1
+  enabled: false
+  tasks: false
+
+# 图片放大，domain需要公网可访问的地址
+# key请到https://bigjpg.com获取，每月30次免费
+# 目前注册没有限制，可配置多个key轮询
+#magnify:
+#  - "xxx"
